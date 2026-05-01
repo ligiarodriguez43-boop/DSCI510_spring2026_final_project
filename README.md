@@ -12,3 +12,9 @@ Data Sources:
 | 3        | Colorectal Cancer Dietary and Lifestyle Dataset – colon cancer risk factors | https://www.kaggle.com/datasets/ziya07/colorectal-cancer-dietary-and-lifestyle-dataset | File | Healthcare | CSV | 1,000 | 
 | 4        | CDC Wonder   | https://wonder.cdc.gov/wonder/help/wonder-api.html | Web | Healthcare | XML | 300 
 
+Analysis: 
+
+Summary of Results: 
+
+How to run: 
+
