@@ -16,7 +16,7 @@ response = requests.get(
     headers=headers,
     params={
         "name": "colon",
-        "size": 50
+        "size": 300
     }
 )
 print(f"Status: {response.status_code}")
