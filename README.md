@@ -105,7 +105,7 @@ python main.py --only trials    # NCI clinical trials API
 python main.py --only wonder    # CDC WONDER API
 ```
 
-**Note on the NCI Clinical Trials stage:** the NCI API requires a key and is occasionally rate-limited or has schema changes. Each pipeline stage is wrapped in a safe runner — if the trials stage fails, the rest of the pipeline (`crc`, `global`, `wonder`) continues normally and you'll see "FAILED" next to that stage in the summary. To skip API stages entirely, use `--skip-api`.
+**Note on the NCI Clinical Trials stage:** the NCI API requires a key and is occasionally rate-limited or has schema changes. Each pipeline stage is wrapped in a safe runner & if the trials stage fails, the rest of the pipeline (`crc`, `global`, `wonder`) continues normally and you'll see "FAILED" next to that stage in the summary. To skip API stages entirely, use `--skip-api`.
 
 ### 5. Run the notebook
 
