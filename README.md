@@ -2,7 +2,7 @@
 
 ## Introduction
 
-Colon cancer was once considered a disease mainly affecting middle-aged or older adults, but recent studies have shown a rise in colon cancer among younger people. To address this change, building various machine learning (ML) prediction models can be helpful to estimate mortality rates. The models use datasets containing patient age, global colon cancer data, cancer stage data, risk factors, gender, and survival outcomes. After cleaning and organizing the data, these factors are used to train ML models such as logistic regression, decision trees, and gradient boosting to predict mortality. The models are then evaluated to assess how accurately they predict mortality rates across age groups, genders, and countries — and how effective colon cancer clinical trials are.
+Colon cancer was once considered a disease mainly affecting middle-aged or older adults, but recent studies have shown a rise in colon cancer among younger people. To address this change, building various machine learning (ML) prediction models can be helpful to estimate mortality rates. The models use datasets containing patient age, global colon cancer data, cancer stage data, risk factors, gender, and survival outcomes. After cleaning and organizing the data, these factors are used to train ML models such as logistic regression, decision trees, and gradient boosting to predict mortality. The models are then evaluated to assess how accurately they predict mortality rates across age groups, genders, colon cancer clinical trials and countries. 
 
 This project draws on four data sources: two Kaggle CSV datasets, the NCI Clinical Trials API, and the CDC WONDER API. For each source, the pipeline performs exploratory data analysis, trains multiple machine learning models (linear/logistic regression, decision tree, random forest, gradient boosting), evaluates them with appropriate metrics (RMSE, R², AUC, classification report, calibration), and produces a worked prediction for an example patient or demographic profile.
 
@@ -21,9 +21,9 @@ The project performs four parallel analyses, each combining EDA, multiple ML mod
 
 **1. Colon cancer risk classification** (`src/crc_analysis.py`) — uses the dietary and lifestyle Kaggle dataset to predict a binary CRC risk label from demographic and lifestyle features. Compares Linear Regression (as a calibration baseline), Logistic Regression with class-weight balancing, Random Forest, and Gradient Boosting. Evaluated with classification report and ROC-AUC.
 
-**2. Global mortality (survival) classification** (`src/global_rankings.py`) — uses the global Kaggle dataset (~167K records) to predict 5-year mortality. One-hot encodes categoricals, scales inputs for Logistic Regression, and adds calibration curve analysis to assess probability reliability. Compares Logistic Regression, Decision Tree, and Gradient Boosting.
+**2. Global mortality (survival) classification** (`src/global_rankings.py`) — uses the global Kaggle dataset (~167K records) to predict 5 year mortality. One-hot encodes categoricals, scales inputs for Logistic Regression, and adds calibration curve analysis to assess probability reliability. Compares Logistic Regression, Decision Tree, and Gradient Boosting.
 
-**3. Clinical trials survival reporting** (`src/crc_clinical_trials.py`) — fetches up to 400 colon cancer trials from the NCI Clinical Trials API via three fallback strategies (POST with disease codes, GET per code, keyword fallback). Extracts treatment-modality features (immunotherapy / targeted therapy / chemo / radiation) and trial phase, then predicts whether a trial reports survival outcomes. This is the analysis that addresses *"how effective are colon cancer clinical trials"* in the introduction.
+**3. Clinical trials survival reporting** (`src/crc_clinical_trials.py`) — fetches up to 400 colon cancer trials from the NCI Clinical Trials API via three fallback strategies (POST with disease codes, GET per code, keyword fallback). Extracts treatment-modality features (immunotherapy / targeted therapy / chemo / radiation) and trial phase, then predicts whether a trial reports survival outcomes.
 
 **4. Population mortality regression** (`src/cdc_wonder.py`) — POSTs an XML query to CDC WONDER for California colon cancer deaths 2018–2022, parses the row-span-encoded HTML response, encodes age ranges as numeric midpoints, and trains regressors with 5-fold cross-validation. Compares Linear Regression, Random Forest, and Gradient Boosting on R², MAE, and RMSE.
 
@@ -35,8 +35,8 @@ Across all four, plots include correlation heatmaps, ROC curves, confusion matri
 - **Global mortality classifier:** Logistic Regression and Gradient Boosting both reach AUC in the mid-0.50s, with the Decision Tree underperforming. Calibration analysis shows predicted probabilities are reasonably well-aligned with observed mortality rates in the middle bins.
 - **Clinical trials:** roughly half the fetched colon cancer trials report some survival measure. Phase III/IV trials over-index on survival reporting; the model's strongest predictor is trial phase, with treatment modality contributing modestly.
 - **CDC WONDER mortality regression:** Random Forest and Gradient Boosting reach R² around 0.85–0.90, vastly outperforming Linear Regression (R² ≈ 0.65). Age midpoint dominates feature importance, with sex and race contributing meaningful but smaller signal.
-
-For a 65–69 year-old white non-Hispanic male in California (2022), the trained models predict deaths in this stratum on the order of dozens per year — consistent with state vital-statistics totals.
+  
+For a 65–69 year-old white non-Hispanic male in California (2022), the trained models predict deaths in this stratum on the order of dozens per year & it was consistent with the state vital-statistics totals.
 
 ## How to run
 
