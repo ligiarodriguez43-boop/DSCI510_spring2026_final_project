@@ -65,7 +65,7 @@ Per the submission guidelines, **no data files are committed to this repo**. To 
 - After download, rename the CSV to `colorectal_cancer_dataset.csv` and place it in `data/`.
 - Expected columns include: `Patient_ID`, `Age`, `Gender`, `Country`, `Cancer_Stage`, `Tumor_Size_mm`, `Treatment_Type`, `Mortality` (Yes/No), and others.
 
-The two API analyses (CDC WONDER, NCI Clinical Trials) fetch their data live and need only network access (and an API key for NCI — see below). If you don't have the CSVs and only want to run the API stages, use:
+The two API analyses (CDC WONDER, NCI Clinical Trials) fetch their data live and need only network access (and an API key for NCI please, see below). If you don't have the CSVs and only want to run the API stages, use:
 
 ```bash
 python main.py --only wonder    # CDC WONDER, no key required
@@ -123,5 +123,5 @@ python tests.py
 python -m pytest tests.py -v
 ```
 
-The test suite includes 17 tests covering config validation, data-loading and feature-engineering helpers (BMI categorization, age-range parsing, encoding), the WONDER HTML parser's error path, and feature preparation for the global dataset.
+The test suite includes 17 tests covering config validation, data loading and feature engineering helpers (BMI categorization, age range parsing, encoding), the WONDER HTML parser's error path, and feature preparation for the global dataset.
 
