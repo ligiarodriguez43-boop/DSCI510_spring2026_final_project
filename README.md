@@ -89,16 +89,16 @@ The CDC WONDER endpoint does not require a key.
 ### 4. Run the pipeline
 
 ```bash
-# Run everything end-to-end
+# Runs 
 python main.py
 
-# Run without showing plots (faster, useful for testing)
+# Runs without showing plots 
 python main.py --no-plots
 
 # Skip the API-based analyses (no network / no key needed)
 python main.py --skip-api
 
-# Run a single analysis
+# Runs a single analysis
 python main.py --only crc       # local CRC dataset
 python main.py --only global    # global rankings
 python main.py --only trials    # NCI clinical trials API
