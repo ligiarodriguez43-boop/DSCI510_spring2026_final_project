@@ -34,9 +34,7 @@ Across all four, plots include correlation heatmaps, ROC curves, confusion matri
 - **Local CRC classifier:** all three classifiers cluster around AUC ≈ 0.50–0.55, suggesting the demographic/lifestyle features alone provide limited discriminative signal — consistent with CRC being multifactorial. Linear regression baseline reports near-zero R², reinforcing this.
 - **Global mortality classifier:** Logistic Regression and Gradient Boosting both reach AUC in the mid-0.50s, with the Decision Tree underperforming. Calibration analysis shows predicted probabilities are reasonably well-aligned with observed mortality rates in the middle bins.
 - **Clinical trials:** roughly half the fetched colon cancer trials report some survival measure. Phase III/IV trials over-index on survival reporting; the model's strongest predictor is trial phase, with treatment modality contributing modestly.
-- **CDC WONDER mortality regression:** Random Forest and Gradient Boosting reach R² around 0.85–0.90, vastly outperforming Linear Regression (R² ≈ 0.65). Age midpoint dominates feature importance, with sex and race contributing meaningful but smaller signal.
-  
-For a 65–69 year-old white non-Hispanic male in California (2022), the trained models predict deaths in this stratum on the order of dozens per year & it was consistent with the state vital-statistics totals.
+- **CDC WONDER mortality regression:** Random Forest and Gradient Boosting reach R² around 0.85–0.90, vastly outperforming Linear Regression (R² ≈ 0.65). Age midpoint dominates feature importance, with sex and race contributing meaningful but smaller signal. For a 65–69 year-old white non-Hispanic male in California (2022), the trained models predict deaths in this stratum on the order of dozens per year & it was consistent with the state vital-statistics totals.
 
 ## How to run
 
